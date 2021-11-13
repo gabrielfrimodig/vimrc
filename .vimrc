@@ -15,13 +15,12 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set relativenumber
-
-" Test stuff
+set belloff=all
 set autoindent
+
+set t_Co=256
+set encoding=UTF-8      " Needed for icons
 set hlsearch
-
-" End of test stuff
-
 set laststatus=2
 
 set colorcolumn=80
@@ -31,12 +30,15 @@ highlight ColorColumn ctermbg=0 guibg=lightgray
 let g:rainbow_active=1
 "let g:airline_theme='one'
 
+highlight VertSplit cterm=NONE
+set fillchars+=vert:\
+
 map <C-l> :tabn<CR>
 map <C-h> :tabp<CR>
 map <C-n> :tabnew<CR>
 
 imap ii <Esc>
-nmap <F6> :NERDTreeToggle<CR>
+nmap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :set hlsearch!<CR>
 
 " Quicker window movement
@@ -68,6 +70,10 @@ inoremap <C-k> <esc>:m .-2<CR>==
 nnoremap <leader>k :m .-2<CR>==
 nnoremap <leader>j :m .+1<CR>==
 
+" Unhighlight text after search
+nnoremap <silent> <esc> :noh<cr><esc>
+nnoremap <esc>^[ <esc>^[
+
 " ag items. Silent ag
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor\ --column
@@ -87,16 +93,19 @@ endfunction
 
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'            " Lightline statusbar
 Plug 'preservim/nerdtree'               " Nerd tree
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'preservim/nerdcommenter'          " Nerd comments
 Plug 'frazrepo/vim-rainbow'             " Rainbow
+Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 " Plug 'dense-analysus/ale'               " ALE
-Plug 'git@github.com:Valloric/YouCompleteMe.git'
+" Plug 'git@github.com:Valloric/YouCompleteMe.git'
 Plug 'pacokwon/onedarkhc.vim'
 
 call plug#end()
-
