@@ -5,25 +5,30 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
+set relativenumber
 set nu
 set nowrap
 set smartcase
+set nohlsearch!
 set noswapfile
 set nobackup
-set nohlsearch!
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-set relativenumber
 set belloff=all
 set autoindent
+set exrc
+set guicursor=
+set hidden
+set scrolloff=8
+" set signcolumn=yes
 
 set t_Co=256
 set encoding=UTF-8      " Needed for icons
 set hlsearch
 set laststatus=2
 
-set colorcolumn=80
+" set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgray
 
 "au FileType c,cpp call rainbow#load()    " For spc filetypes only
@@ -74,6 +79,11 @@ nnoremap <leader>j :m .+1<CR>==
 nnoremap <silent> <esc> :noh<cr><esc>
 nnoremap <esc>^[ <esc>^[
 
+set termguicolors
+let ayucolor="light"
+let ayucolor="mirage"
+let ayucolor="dark"
+
 " ag items. Silent ag
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor\ --column
@@ -103,7 +113,8 @@ Plug 'frazrepo/vim-rainbow'             " Rainbow
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
+Plug 'ayu-theme/ayu-vim'
+" Plug 'vifm/vifm.vim'
 " Plug 'dense-analysus/ale'               " ALE
 " Plug 'git@github.com:Valloric/YouCompleteMe.git'
 Plug 'pacokwon/onedarkhc.vim'
